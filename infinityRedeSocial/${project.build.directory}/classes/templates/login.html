@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Infinity - Login</title>
+    <link rel="icon" href="/static/images/Infinity_icone.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        body {
+            background-color: #333; /* Cor de fundo escura para a página */
+            color: #fff; /* Cor do texto na página */
+        }
+
+        .btn-primary {
+            background-color: #006400; /* Cor verde mais escura para o botão "Enter" */
+            border-color: #006400; /* Cor da borda do botão "Enter" */
+        }
+
+        .btn-primary:hover {
+            background-color: #004d00; /* Cor verde ainda mais escura ao passar o mouse sobre o botão */
+            border-color: #004d00;
+        }
+
+        #cabecalho {
+            background-color: #222; /* Cor de fundo escura para o cabeçalho */
+        }
+
+        #conteudo {
+            color: #fff; /* Cor do texto na área de conteúdo */
+        }
+    </style>
+
+    <script>
+        function validarFormulario() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (email.trim() === '' || password.trim() === '') {
+                document.getElementById("error").innerText = "Por favor, preencha todos os campos.";
+                return false; // Impede o envio do formulário
+            }
+
+            return true; // Permite o envio do formulário
+        }
+    </script>
+</head>
+<body>
+
+<header id="cabecalho">
+    <img alt="Infinity_logo.png" src="/images/Infinity_logo.png" height="150" width="500"/>
+</header>
+
+<main id="conteudo">
+    <form th:action="@{/login}" method="post" onsubmit="return validarFormulario()">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="text" id="email" name="email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+
+        <div id="error" th:if="${error}" class="alert alert-danger">
+            <p th:text="${error}"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <a class="btn btn-success" href="/adicionar_usuario">Cadastrar Novo Usuário</a>
+    </form>
+</main>
+
+<p>Rede Social</p>
+<p>Desenvolvida por João Vitor Monteiro, Jonathan Gois e Kleiton Ferreira</p>
+
+</body>
+</html>

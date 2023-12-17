@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Infinity - Registrar Usuário</title>
+    <link rel="icon" href="/static/images/Infinity_icone.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background-color: #333; /* Cor de fundo escura para a página */
+            color: #fff; /* Cor do texto na página */
+        }
+    </style>
+
+</head>
+<body>
+
+<form method="post" action="/adicionar_usuario">
+    <h1>Infinity - Registro de Usuários</h1>
+    <p>
+        <label>Nome:</label>
+        <input type="text" name="nome" />
+    </p>
+    <p>
+        <label>E-mail:</label>
+        <input type="text" name="email" />
+    </p>
+    <p>
+        <label>Senha:</label>
+        <input type="password" name="password" />
+    </p>
+    <button type="submit">Registrar</button>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/login'">Sair</button>
+</form>
+<div th:if="${error}" class="alert alert-danger">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>
